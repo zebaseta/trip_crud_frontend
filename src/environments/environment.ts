@@ -10,6 +10,6 @@
 
 export const environment = {
   production: false,
-  api: 'http://localhost/api/v1'
+  api: 'http://localhost:8080/otravo'
   //api: 'http://192.168.99.102/api/v1'
 };

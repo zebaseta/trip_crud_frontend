@@ -3,7 +3,7 @@
  * Copyright Akveo. All Rights Reserved.
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, ɵɵinjectPipeChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { NB_AUTH_OPTIONS } from '../../auth.options';
 import { getDeepFromObject } from '../../helpers';
@@ -17,6 +17,7 @@ import { User } from 'app/models/user';
 import { SystemService } from '../../../../services/system.service';
 import { CostsService } from '../../../../services/costs.service';
 import { MonthCost } from '../../../../models/month-cost';
+import { V } from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'nb-login',
@@ -54,53 +55,25 @@ export class NbLoginComponent {
     const formLogin = this.user as Login;
     const login = new Login(formLogin.email, formLogin.password);
     this.loginService.login(login).subscribe(
-      () => {
+      (t) => {
+        console.log("`121`2`121`221`2`1");
+          console.log(t);
           this.submitted = false;
-          this.userService.getAll().subscribe(users=>{                        
-            localStorage.setItem('users',JSON.stringify(users));
-            this.systemService.getAllSystems().subscribe(data=>{              
-              localStorage.setItem('systems',JSON.stringify(data.systems));              
-              this.costService.getAll("2020").subscribe(      
-                monthsCostAlone => {
-                  if(monthsCostAlone===null || monthsCostAlone.length==0 ) console.log("", "No se encuentran facturas de ese año" );
-                  else{
-                    var monthsCost = new Array();
-                    console.log(monthsCostAlone)
-                    for(let month of monthsCostAlone){
-                        var monthCost = new MonthCost(month.id, month.bugs, month.users, month.period, month.bugs.total+month.users.total);
-                        monthsCost.push(monthCost);
-                    }
-                    console.log(monthsCost);
-                    monthsCost.sort(function(a,b){
-                      if(a.id > b.id) return 1;
-                      if(a.id<b.id) return -1;
-                      else return 0;
-                    });                
-                    sessionStorage.setItem("monthsCost",JSON.stringify(monthsCost));  
-                  }        
-                },
-                (error: any) => {
-                  console.log("nos fuimoooooooooooooooosssssssssssss")
-                  console.log(error);
-                }
-              );
-
-
-              setTimeout(() => {
-                return this.router.navigate(['/']);
-              }, this.redirectDelay);  
-            },
-            (error: any) => {
-              this.messageError = error.error;
-              this.cd.detectChanges();
-            });                  
-          },
-          (error: any) => {
-            this.messageError = error.error;
-            this.cd.detectChanges();
-          });
+          console.log("fdsapo ijoifdsapj oijadfspoijf asdoijf poasidjfp oisadjfp oiasjdf")
+          console.log("fdsapo ijoifdsapj oijadfspoijf asdoijf poasidjfp oisadjfp oiasjdf")
+          console.log("fdsapo ijoifdsapj oijadfspoijf asdoijf poasidjfp oisadjfp oiasjdf")
+          console.log("fdsapo ijoifdsapj oijadfspoijf asdoijf poasidjfp oisadjfp oiasjdf")
+          console.log("fdsapo ijoifdsapj oijadfspoijf asdoijf poasidjfp oisadjfp oiasjdf")
+          console.log("fdsapo ijoifdsapj oijadfspoijf asdoijf poasidjfp oisadjfp oiasjdf")
+          setTimeout(() => {
+            return this.router.navigate(['/']);
+          }, this.redirectDelay);  
       },
       (error: any) => {
+        console.log("mmmamamamamammamaasdmasdmdsmmmmmmmmmmmmmmmmmmmm")
+        console.log("mmmamamamamammamaasdmasdmdsmmmmmmmmmmmmmmmmmmmm")
+        console.log("mmmamamamamammamaasdmasdmdsmmmmmmmmmmmmmmmmmmmm")
+        console.log(error)
         this.messageError = error.error;
         this.cd.detectChanges();
       }

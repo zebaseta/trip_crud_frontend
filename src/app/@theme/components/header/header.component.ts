@@ -79,9 +79,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     this.loggedUser = this.loginService.getLoggedUser();
     this.loggedUserName = this.loggedUser.name;
-
-    this.organizationService.getOrganizationById(this.loggedUser.organizationId.toString())
-      .subscribe((org) => this.organizationName = org.organization.name);
+    this.organizationName = "OTRAVO";
 
     const { xl } = this.breakpointService.getBreakpointsMap();
     this.themeService.onMediaQueryChange()

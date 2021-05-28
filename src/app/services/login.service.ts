@@ -5,6 +5,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { Login } from '../models/login';
+import { Token } from '../models/token';
 import { UserFromToken } from '../models/user-from-token';
 // @ts-ignore  
 import jwt_decode from "jwt-decode";
@@ -20,10 +21,10 @@ export class LoginService {
     constructor(private http: HttpClient, private router: Router) { }
     
     
-    login(login: Login): Observable<string> {
-        const url = `${environment.api}/login`; 
+    login(login: Login): Observable<Token> {        
+        const url = `${environment.api}/login`;         
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-        return this.http.post(url, JSON.stringify(login), { headers })
+              return this.http.post(url, JSON.stringify(login), { headers })
             .pipe(
                 map((response) => response),
                 tap(this.setDataIntoLocalStorage),
@@ -32,16 +33,16 @@ export class LoginService {
 
     setDataIntoLocalStorage(data: any): void {
         try{
+            console.log(data);
             var tokenInfo = jwt_decode(data.authorization);
-            console.log(tokenInfo)
-            this.userLogged = new UserFromToken(tokenInfo.data.user.id,
-                tokenInfo.data.user.name,
-                tokenInfo.data.user.email,
-                tokenInfo.data.user.role,
-                tokenInfo.data.organizationId);
+            this.userLogged = new UserFromToken(tokenInfo.user_id,
+                tokenInfo.user_name,
+                tokenInfo.user_email);
+
         }
         catch(Error){
-        }
+            console.error('Has error to parse token');
+        }        
         localStorage.setItem('user', JSON.stringify(this.userLogged));
         localStorage.setItem('authorization', data.authorization);
         localStorage.setItem('tokenExpiration', tokenInfo.exp);
@@ -61,7 +62,8 @@ export class LoginService {
 
     userIsAdmin(): boolean {
         var userLogged = this.getLoggedUser();
-        return userLogged.role.toString()==='1';
+        //return userLogged.role.toString()==='1';
+        return true;
     }
         
     logout(): void {

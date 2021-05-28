@@ -20,5 +20,5 @@
 
 export const environment = {
   production: false,
-  api: 'http://localhost/api/v1'
+  api: 'http://springboot-otravo-trips.herokuapp.com/otravo'
 };
