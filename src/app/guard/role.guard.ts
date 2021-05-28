@@ -16,7 +16,7 @@ export class RoleGuard implements CanActivateChild {
             return true;
         }
         else {
-          this.router.navigateByUrl('/bugs');
+          this.router.navigateByUrl('/trips');
           return false;
         }
     }

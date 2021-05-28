@@ -21,8 +21,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public readonly materialTheme$: Observable<boolean>;
   userPictureOnly: boolean = false;
   user: any;
-  loggedUserName: string;
-  organizationName: string;
+  loggedUserName: string;  
   loggedUser: UserFromToken;
 
   themes = [
@@ -63,8 +62,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private themeService: NbThemeService,
     private layoutService: LayoutService,
     private breakpointService: NbMediaBreakpointsService,
-    private loginService: LoginService,
-    private organizationService: OrganizationService,
+    private loginService: LoginService,    
     private router: Router
   ) {
     this.materialTheme$ = this.themeService.onThemeChange()
@@ -79,7 +77,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     this.loggedUser = this.loginService.getLoggedUser();
     this.loggedUserName = this.loggedUser.name;
-    this.organizationName = "OTRAVO";
+    
 
     const { xl } = this.breakpointService.getBreakpointsMap();
     this.themeService.onMediaQueryChange()
