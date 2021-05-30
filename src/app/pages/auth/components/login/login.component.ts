@@ -13,9 +13,6 @@ import { NbAuthService } from '../../services/auth.service';
 import { Login } from '../../../../models/login';
 import { LoginService } from '../../../../services/login.service';
 
-import { User } from 'app/models/user';
-
-import { MonthCost } from '../../../../models/month-cost';
 import { V } from '@angular/cdk/keycodes';
 
 @Component({

@@ -8,31 +8,12 @@ import { LoginService } from './login.service';
 export class GlobalsService {
     constructor(private loginService: LoginService) {}
 
-    MAX_TITLE_TABLE:number = 20;
-    MAX_DESCRIPTION_TABLE:number = 40;
-    arrayBySeverityStatistics = new Array();
-    arrayByStateStatistics= new Array();
-    lastCountErrorsStatitics:number;
-    lastTextStatistics: string;
-
     getHeaderOptions() {        
-        const token = this.loginService.getToken();
-        console.log(token)
+        const token = this.loginService.getToken();        
         let headers: HttpHeaders = new HttpHeaders();
         headers = headers.append('Authorization', token);
         headers = headers.append('Content-Type', 'application/json');
         return { headers };
     }
-
-    setArraysStatistics(bySeverity:any,byState:any,
-                        lastCountErrorsStatitics:number,
-                        lastTextStatistics:string){
-        this.arrayBySeverityStatistics = bySeverity;
-        this.arrayByStateStatistics = byState;
-        this.lastCountErrorsStatitics = lastCountErrorsStatitics;
-        this.lastTextStatistics = lastTextStatistics;
-
-    }
-  
 }
 

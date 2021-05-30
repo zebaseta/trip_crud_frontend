@@ -7,7 +7,7 @@ import {
   NbTreeGridModule,
   NbButtonModule,
   NbLayoutModule,
-  NbAlertModule } from '@nebular/theme';
+  NbAlertModule,NbListComponent } from '@nebular/theme';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 import { ThemeModule } from '../../@theme/theme.module';

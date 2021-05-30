@@ -4,7 +4,7 @@ import { NB_AUTH_OPTIONS } from '../../auth.options';
 import { getDeepFromObject } from '../../helpers';
 import { switchMap } from 'rxjs/operators';
 import { NbAuthService } from '../../services/auth.service';
-import { User } from '../../../../models/user';
+
 //import { UserService } from '../../../../services/user.service';
 
 
@@ -48,9 +48,7 @@ export class NbRegisterComponent implements OnInit {
 
   register(): void {
     this.errors = this.messages = [];
-    this.submitted = true;
-    const formUser = this.user as User;
-    const user = new User(formUser.email, formUser.password, formUser.name);      
+    this.submitted = true;    
    
   }
 

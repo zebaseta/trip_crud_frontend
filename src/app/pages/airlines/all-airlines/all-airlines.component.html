@@ -1,1 +1,10 @@
-<p>all-airlines works!</p>
+<nb-card>
+    <nb-card-header>
+        Aiports
+    </nb-card-header>
+
+    <nb-card-body>
+        <ng2-smart-table [settings]="settings" [source]="source" (createConfirm)="addRecord($event)" (editConfirm)="updateRecord($event)" (deleteConfirm)="onDeleteConfirm($event)">
+        </ng2-smart-table>
+    </nb-card-body>
+</nb-card>

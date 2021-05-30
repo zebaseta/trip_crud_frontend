@@ -1,1 +1,0 @@
-export enum TypeAlert {NOT_ALLOW="No envíar correo", DIRECT="Envío inmediato", USER="Envío a hora definida por usuario"};
