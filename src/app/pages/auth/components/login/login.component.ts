@@ -12,10 +12,9 @@ import { NbAuthService } from '../../services/auth.service';
 
 import { Login } from '../../../../models/login';
 import { LoginService } from '../../../../services/login.service';
-import {UserService } from '../../../../services/user.service';
+
 import { User } from 'app/models/user';
-import { SystemService } from '../../../../services/system.service';
-import { CostsService } from '../../../../services/costs.service';
+
 import { MonthCost } from '../../../../models/month-cost';
 import { V } from '@angular/cdk/keycodes';
 
@@ -41,9 +40,7 @@ export class NbLoginComponent {
               protected cd: ChangeDetectorRef,
               protected router: Router,
               private loginService: LoginService,
-              private userService:UserService,
-              private systemService:SystemService,
-              private costService: CostsService) {
+              ) {
     this.redirectDelay = this.getConfigValue('forms.login.redirectDelay');
     this.showMessages = this.getConfigValue('forms.login.showMessages');
     this.strategy = this.getConfigValue('forms.login.strategy');

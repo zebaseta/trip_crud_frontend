@@ -9,8 +9,6 @@ import { Token } from '../models/token';
 import { UserFromToken } from '../models/user-from-token';
 // @ts-ignore  
 import jwt_decode from "jwt-decode";
-import { CostsService } from './costs.service';
-import { MonthCost } from '../models/month-cost';
 
 @Injectable({
     providedIn: 'root'
