@@ -55,24 +55,13 @@ export class NbLoginComponent {
     const formLogin = this.user as Login;
     const login = new Login(formLogin.email, formLogin.password);
     this.loginService.login(login).subscribe(
-      (t) => {
-        console.log("`121`2`121`221`2`1");
-          console.log(t);
+      () => {
           this.submitted = false;
-          console.log("fdsapo ijoifdsapj oijadfspoijf asdoijf poasidjfp oisadjfp oiasjdf")
-          console.log("fdsapo ijoifdsapj oijadfspoijf asdoijf poasidjfp oisadjfp oiasjdf")
-          console.log("fdsapo ijoifdsapj oijadfspoijf asdoijf poasidjfp oisadjfp oiasjdf")
-          console.log("fdsapo ijoifdsapj oijadfspoijf asdoijf poasidjfp oisadjfp oiasjdf")
-          console.log("fdsapo ijoifdsapj oijadfspoijf asdoijf poasidjfp oisadjfp oiasjdf")
-          console.log("fdsapo ijoifdsapj oijadfspoijf asdoijf poasidjfp oisadjfp oiasjdf")
           setTimeout(() => {
             return this.router.navigate(['/']);
           }, this.redirectDelay);  
       },
       (error: any) => {
-        console.log("mmmamamamamammamaasdmasdmdsmmmmmmmmmmmmmmmmmmmm")
-        console.log("mmmamamamamammamaasdmasdmdsmmmmmmmmmmmmmmmmmmmm")
-        console.log("mmmamamamamammamaasdmasdmdsmmmmmmmmmmmmmmmmmmmm")
         console.log(error)
         this.messageError = error.error;
         this.cd.detectChanges();

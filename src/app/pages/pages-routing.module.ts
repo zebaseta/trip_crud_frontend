@@ -24,40 +24,6 @@ const routes: Routes = [{
         .then(m => m.TripsModule),
     },
     {
-      path: '',
-      loadChildren: () => import('./bugs/bugs.module')
-        .then(m => m.BugsModule),
-    },    
-    {
-      path: '',
-      canActivateChild: [RoleGuard],
-      loadChildren: () => import('./systems/systems.module')
-        .then(m => m.SystemsModule),
-    },
-    {
-      path: '',      
-      loadChildren: () => import('./preferences/preferences.module')
-        .then(m => m.PreferencesModule),
-    },
-    {
-      path: '',
-      canActivateChild: [RoleGuard],
-      loadChildren: () => import('./invitations/invitations.module')
-        .then(m => m.InvitationsModule),
-    },
-    {
-      path: '',
-      canActivateChild: [RoleGuard],
-      loadChildren: () => import('./reports/statistics.module')
-        .then(m => m.StatisticsModule),
-    },
-    {
-      path: '',
-      canActivateChild: [RoleGuard],
-      loadChildren: () => import('./costs/costs-module.module')
-        .then(m => m.CostsModule),
-    },
-    {
       path: '**',
       component: NotFoundComponent,
     },

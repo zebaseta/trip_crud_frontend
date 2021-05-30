@@ -6,7 +6,7 @@ import { NbRegisterComponent } from './pages/auth/components/register/register.c
 import { AuthenticationGuard } from './guard/authentication.guard';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'bugs', pathMatch: 'full' },
+  { path: '', redirectTo: 'trips', pathMatch: 'full' },
   {
     path: '',
     component: NbAuthComponent,
@@ -21,10 +21,6 @@ export const routes: Routes = [
       },
       {
         path: 'register',
-        component: NbRegisterComponent,        
-      },  
-      {
-        path: 'register/:id',
         component: NbRegisterComponent,        
       }
     ],
