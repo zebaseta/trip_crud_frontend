@@ -5,7 +5,7 @@ import { getDeepFromObject } from '../../helpers';
 import { switchMap } from 'rxjs/operators';
 import { NbAuthService } from '../../services/auth.service';
 import { User } from '../../../../models/user';
-import { UserService } from '../../../../services/user.service';
+//import { UserService } from '../../../../services/user.service';
 
 
 @Component({
@@ -35,8 +35,7 @@ export class NbRegisterComponent implements OnInit {
               @Inject(NB_AUTH_OPTIONS) protected options = {},
               protected cd: ChangeDetectorRef,
               protected router: Router, 
-              private currentRoute: ActivatedRoute, 
-              private userService: UserService) {
+              private currentRoute: ActivatedRoute) {
 
     this.redirectDelay = this.getConfigValue('forms.register.redirectDelay');
     this.showMessages = this.getConfigValue('forms.register.showMessages');
