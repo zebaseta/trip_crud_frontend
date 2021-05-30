@@ -18,56 +18,23 @@ export class PagesComponent {
 
   canShow: boolean = this.loginService.userIsAdmin();
 
-  menu: NbMenuItem[] = [{
-    title: 'Errores reportados',    
-    icon: 'grid-outline',
-    link: '/bugs',
-    home: true,
-  },
-  {
-    title: 'Sistemas de clientes',
-    icon: 'people-outline',
-    hidden: !this.canShow,
-    children: [
-      {
-        title: 'Listado de sistemas',
-        link: '/systems',
-      },
-      {
-        title: 'Registrar nuevo sistema',
-        link: '/systems/add',
-      }
-    ],            
-  },
-  {
-    title: 'Invitaciones',    
-    icon: 'message-circle-outline',
-    link: '/invitations',
-    hidden: !this.canShow,
-  },
-  {
-    title: 'Reportes',    
-    icon: 'pie-chart-outline',
-    hidden: !this.canShow,
-    children: [
-      {
-        title: 'Estadísticas de bugs',
-        link: '/statistics',
-      },
-      {
-        title: 'Top 10 desarrolladores',
-        link: '/top-users-bugs',
-      },
-      {
-        title: 'Bugs con 2 dias sin asignar',
-        link: '/not-assigned-bugs',
-      }
-    ],
-  },
-  {
-    title: 'Visualizar costos',    
-    icon: 'activity-outline',
-    hidden: !this.canShow,
-    link: '/costs',
-  }];
+  menu: NbMenuItem[] = [
+    {
+      title: 'Airports',    
+      icon: 'home-outline',
+      link: '/airports',
+      home: true,
+    },
+    {
+      title: 'Airlines',    
+      icon: 'grid-outline',
+      link: '/airlines',
+      home: true,
+    },
+    {
+      title: 'Trips',    
+      icon: 'activity-outline',
+      link: '/trips',
+      home: true,
+    }];
 }
