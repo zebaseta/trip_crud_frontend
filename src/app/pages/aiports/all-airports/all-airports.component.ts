@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Renderer2 } from '@angular/core';
+
 
 @Component({
   selector: 'ngx-all-aiports',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AllAirportsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private renderer: Renderer2) {  document.body,
+    "background-image",
+    'url("https://concepto.de/wp-content/uploads/2015/03/paisaje-e1549600034372.jpg")'}
 
   ngOnInit(): void {
   }
