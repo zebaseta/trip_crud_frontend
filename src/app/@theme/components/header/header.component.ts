@@ -6,7 +6,6 @@ import { map, takeUntil } from 'rxjs/operators';
 import { Subject, Observable } from 'rxjs';
 
 import { LoginService } from '../../../services/login.service';
-import { OrganizationService } from '../../../services/organization.service';
 import { UserFromToken } from 'app/models/user-from-token';
 import { Router } from '@angular/router';
 
