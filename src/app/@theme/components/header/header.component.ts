@@ -97,12 +97,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
       });
 
       this.menuService.onItemClick().subscribe((event) => {
-        if (event.item.title === 'Cerrar sesión') {
+        if (event.item.title === 'Sign off') {
           this.logout();          
         }
-        else if (event.item.title.trim() === "Configuración"){
+        /*else if (event.item.title.trim() === "Configuration"){
           this.router.navigate(['/preferences']);
-        }
+        }*/
       });
   }
 
