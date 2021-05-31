@@ -1,22 +1,23 @@
 export class Fligth {
     code: string;
-    originDate: Date;
+    originDate: string;
     originAirport:string;
-    destinationDate: Date;
+    destinationDate: string;
     destinationAirport:string;
-    airlineCode:string;
+    airline:string;
 
     constructor(code: string,
-                originDate: Date,
+                originDate: string,
                 originAirport:string,
-                destinationDate: Date,
+                destinationDate: string,
                 destinationAirport:string,
-                airlineCode:string) {
+                airline:string) {
         this.code = code;
         this.originDate = originDate;
         this.originAirport = originAirport;
         this.destinationDate = destinationDate;
         this.destinationAirport = destinationAirport;
-        this.airlineCode = airlineCode;
+        this.airline = airline;
+        
     }
 } 

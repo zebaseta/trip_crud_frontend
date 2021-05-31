@@ -7,6 +7,7 @@ import { LocalDataSource } from 'ng2-smart-table';
 import { SimpleOuterSubscriber } from 'rxjs/internal/innerSubscribe';
 import { CompleteTrip } from '../../../models/complete-trip';
 import { BasicTrip } from '../../../models/basic-trip';
+import { GlobalsService } from '../../../services/globals.service';
 
 @Component({
   selector: 'ngx-all-trips',
@@ -55,6 +56,11 @@ export class AllTripsComponent implements OnInit {
         filter: true,
         type: 'string',
       },
+      passengerEmail: {
+        title: 'Passenger email',        
+        filter: true,
+        type: 'string',
+      },
       passengerPassport: {
         title: 'Passenger passport',        
         filter: true,
@@ -74,20 +80,26 @@ export class AllTripsComponent implements OnInit {
   };
 
 
-  constructor(private route: Router,private toastrService: NbToastrService, private tripService: TripService) {     
+  constructor(private route: Router,private toastrService: NbToastrService, 
+    private tripService: TripService, private globalService:GlobalsService) {     
     this.toast = new TripsToast(toastrService);   
-    
-    
   }
 
   
+  routeToAPage(event): void {    
+    var trip:BasicTrip = event.data;
+    this.route.navigateByUrl('/trips/passengers/'+trip.passengerPassport);    
+  }
+
+
     ngOnInit(): void {
-      this.tripService.getAll().subscribe(
+      this.tripService.getAll(null,null).subscribe(
         (trips) => {        
           if(trips == null || trips.length == 0){
             this.toast.showToast(2, "Info", "There are no trips" );  
           }
           else{
+            this.globalService.saveCurrentTrips(trips);
             var basicTrips =  this.convertCompleteTripsToBasicTrips(trips);
             this.source.load(basicTrips);
           }

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { TripsComponent } from './trips.component';
 import { AllTripsComponent } from './all-trips/all-trips.component';
 import { TripsByComponent } from './trips-by/trips-by.component';
+import {OneTripComponent} from './one-trip/one-trip.component';
 
 
 const routes: Routes = [{
@@ -14,8 +15,13 @@ const routes: Routes = [{
       component: AllTripsComponent,      
     },
     {
-      path: 'trips/passenger',
+      path: 'trips/passengers',
       component: TripsByComponent,      
+    }
+    ,
+    {
+      path: 'trips/passengers/:passport',
+      component: OneTripComponent,      
     }
   ],
 }];

@@ -41,7 +41,7 @@ export class PagesComponent {
         },
         {
           title: 'Trips by passenger',
-          link: '/trips/passenger',
+          link: '/trips/passengers',
         }
       ]
     }];

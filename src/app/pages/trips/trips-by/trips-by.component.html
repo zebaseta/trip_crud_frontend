@@ -1,10 +1,27 @@
 <nb-card>
+    <nb-card-header>Select passenger</nb-card-header>
+    <nb-card-body>
+        <form>
+            <div class="form-group">
+                <input name="passengerPassport" #passengerPassport="ngModel" type="text" [(ngModel)]="passenger.passport" nbInput fullWidth placeholder="Passport" [status]="passengerPassport.dirty ? (passengerPassport.invalid ? 'danger' : 'success') : 'basic'" [required]="true"
+                    [attr.aria-invalid]="passengerPassport.invalid && passengerPassport.touched ? true : null">
+            </div>
+            <div class="form-group">
+                <input name="passengerEmail" #passengerEmail="ngModel" type="text" [(ngModel)]="passenger.email" nbInput fullWidth placeholder="Email" [status]="passengerEmail.dirty ? (passengerEmail.invalid ? 'danger' : 'success') : 'basic'" [required]="true" [attr.aria-invalid]="passengerEmail.invalid && passengerEmail.touched ? true : null">
+
+            </div>
+            <button nbButton status="success" (click)="findBy(passengerPassport,passengerEmail)">Send</button>
+        </form>
+    </nb-card-body>
+</nb-card>
+
+<nb-card>
     <nb-card-header>
-        All trips
+        All trips by {{passengerName}}
     </nb-card-header>
 
     <nb-card-body>
-        <ng2-smart-table [settings]="settings" [source]="source">
+        <ng2-smart-table [settings]=" settings " [source]="source" (deleteConfirm)="routeToAPage($event)">
         </ng2-smart-table>
     </nb-card-body>
 </nb-card>

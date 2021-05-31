@@ -15,6 +15,7 @@ import { TripsRoutingModule, routedComponents } from './trips-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TripsByComponent } from './trips-by/trips-by.component';
 import { AllTripsComponent } from './all-trips/all-trips.component';
+import { OneTripComponent } from './one-trip/one-trip.component';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { AllTripsComponent } from './all-trips/all-trips.component';
   declarations: [
     ...routedComponents,
     TripsByComponent,
-    AllTripsComponent
+    AllTripsComponent,
+    OneTripComponent
   ],
 })
 export class TripsModule { }

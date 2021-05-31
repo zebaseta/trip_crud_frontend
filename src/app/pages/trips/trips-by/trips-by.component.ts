@@ -7,6 +7,9 @@ import { LocalDataSource } from 'ng2-smart-table';
 import { SimpleOuterSubscriber } from 'rxjs/internal/innerSubscribe';
 import { CompleteTrip } from '../../../models/complete-trip';
 import { BasicTrip } from '../../../models/basic-trip';
+import { Passenger } from '../../../models/passenger';
+import { PassengerFinder } from '../../../models/passenger-finder';
+import { GlobalsService } from '../../../services/globals.service';
 
 @Component({
   selector: 'ngx-trips-by',
@@ -15,6 +18,8 @@ import { BasicTrip } from '../../../models/basic-trip';
 })
 export class TripsByComponent implements OnInit {
   toast: TripsToast;
+  passenger: any = {};
+  passengerName: string="";
   source: LocalDataSource = new LocalDataSource();
   settings = {
     pager: {
@@ -55,6 +60,11 @@ export class TripsByComponent implements OnInit {
         filter: true,
         type: 'string',
       },
+      passengerEmail: {
+        title: 'Passenger email',        
+        filter: true,
+        type: 'string',
+      },
       passengerPassport: {
         title: 'Passenger passport',        
         filter: true,
@@ -74,35 +84,59 @@ export class TripsByComponent implements OnInit {
   };
 
 
-  constructor(private route: Router,private toastrService: NbToastrService, private tripService: TripService) {     
+  constructor(private route: Router,private toastrService: NbToastrService, 
+    private tripService: TripService,
+    private globalService:GlobalsService) {     
     this.toast = new TripsToast(toastrService);   
     
     
   }
-
   
     ngOnInit(): void {
-      this.tripService.getAll().subscribe(
-        (trips) => {        
-          if(trips == null || trips.length == 0){
-            this.toast.showToast(2, "Info", "There are no trips" );  
-          }
-          else{
-            var basicTrips =  this.convertCompleteTripsToBasicTrips(trips);
-            this.source.load(basicTrips);
-          }
-          
-         },
-        (error: any) => {
-            console.log(error);
-        }
-      );
+     
    }
 
    convertCompleteTripsToBasicTrips(array: Array<CompleteTrip>): BasicTrip[] {
     return array.map(trip => new BasicTrip(trip));
   }
   
+  findBy(passengerPassport,passengerEmail){
+    var passengerToFind = this.passenger as PassengerFinder;
+    if(passengerToFind.email==null && passengerToFind.passport==null){
+      this.toast.showToast(3, "Warning", "There is no data" );  
+    }
+    else{
+      if(passengerToFind.email!=null) this.passengerName = passengerToFind.email; 
+      else if(passengerToFind.passport!=null) this.passengerName = passengerToFind.passport;
+      this.tripService.getAll(passengerToFind.email, passengerToFind.passport).subscribe(
+        (trips) => {        
+          if(trips == null || trips.length == 0){
+            this.toast.showToast(2, "Info", "There are no trips for this passenger" );  
+          }
+          else{
+            this.globalService.saveCurrentTrips(trips);
+            var basicTrips =  this.convertCompleteTripsToBasicTrips(trips);
+            this.source.load(basicTrips);
+            passengerPassport.reset();
+            passengerEmail.reset();
+          }
+          
+         },
+        (error: any) => {
+          this.toast.showToast(2, "Info", "There are no trips for this passenger" );  
+            console.log(error);
+        }
+      );  
+    }
+    
+  }
+
+  routeToAPage(event): void {    
+    var trip:BasicTrip = event.data;
+    this.route.navigateByUrl('/trips/passengers/'+trip.passengerPassport);    
+  }
+
+
 
 }
 

@@ -4,6 +4,7 @@ import {CompleteTrip} from './complete-trip';
 export class BasicTrip {  
     id:number;
     passengerName: string;
+    passengerEmail:string;
     passengerPassport:string;
     countOfOutboundFlights:number;  
     countOfReturnFlights:number;  
@@ -12,6 +13,7 @@ export class BasicTrip {
     constructor(trip:CompleteTrip) {
         this.id = trip.id;
         this.passengerName = trip.passenger.name;
+        this.passengerEmail = trip.passenger.email;
         this.passengerPassport = trip.passenger.passport;
         if(trip.itinerary.outboundFlights != null){
             this.countOfOutboundFlights = trip.itinerary.outboundFlights.length;
