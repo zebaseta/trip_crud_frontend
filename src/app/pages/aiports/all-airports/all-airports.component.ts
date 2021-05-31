@@ -45,11 +45,13 @@ export class AllAirportsComponent implements OnInit {
     columns: {      
       code: {
         title: 'Code',
+        filter: true,
         editable: false,        
         type: 'string',
       }, 
       name: {
         title: 'Name',        
+        filter: true,
         type: 'string',
       }
     }

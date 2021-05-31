@@ -45,11 +45,13 @@ export class AllAirlinesComponent implements OnInit {
     columns: {      
       code: {
         title: 'Code',
-        editable: false,        
+        editable: false,
+        filter: true,        
         type: 'string',
       }, 
       name: {
-        title: 'Name',        
+        title: 'Name',  
+        filter: true,      
         type: 'string',
       }
     }
