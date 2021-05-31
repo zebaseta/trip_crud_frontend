@@ -9,11 +9,11 @@ import { CompleteTrip } from '../../../models/complete-trip';
 import { BasicTrip } from '../../../models/basic-trip';
 
 @Component({
-  selector: 'ngx-all-trips',
-  templateUrl: './all-trips.component.html',
-  styleUrls: ['./all-trips.component.scss']
+  selector: 'ngx-trips-by',
+  templateUrl: './trips-by.component.html',
+  styleUrls: ['./trips-by.component.scss']
 })
-export class AllTripsComponent implements OnInit {
+export class TripsByComponent implements OnInit {
   toast: TripsToast;
   source: LocalDataSource = new LocalDataSource();
   settings = {

@@ -13,6 +13,8 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ThemeModule } from '../../@theme/theme.module';
 import { TripsRoutingModule, routedComponents } from './trips-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TripsByComponent } from './trips-by/trips-by.component';
+import { AllTripsComponent } from './all-trips/all-trips.component';
 
 @NgModule({
   imports: [
@@ -31,7 +33,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   declarations: [
-    ...routedComponents
+    ...routedComponents,
+    TripsByComponent,
+    AllTripsComponent
   ],
 })
 export class TripsModule { }

@@ -23,18 +23,26 @@ export class PagesComponent {
       title: 'Airports',    
       icon: 'home-outline',
       link: '/airports',
-      home: true,
     },
     {
       title: 'Airlines',    
       icon: 'grid-outline',
       link: '/airlines',
-      home: true,
+
     },
     {
       title: 'Trips',    
-      icon: 'activity-outline',
-      link: '/trips',
-      home: true,
+      icon: 'activity-outline',      
+      children: [
+        {
+          title: 'All trips',
+          link: '/trips',
+          home: true,
+        },
+        {
+          title: 'Trips by passenger',
+          link: '/trips/passenger',
+        }
+      ]
     }];
 }
