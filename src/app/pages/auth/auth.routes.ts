@@ -29,7 +29,7 @@ export const routes: Routes = [
         path: 'register',
         component: NbRegisterComponent,
       },
-      {
+      ,{
         path: 'logout',
         component: NbLogoutComponent,
       },

@@ -21,6 +21,8 @@ export class LoginService {
     
     login(login: Login): Observable<Token> {        
         const url = `${environment.api}/login`;         
+        console.log(url);
+        console.log(login);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
               return this.http.post(url, JSON.stringify(login), { headers })
             .pipe(
