@@ -7,7 +7,7 @@ import{CompleteTrip} from './../models/complete-trip'
     providedIn: 'root'
 })
 export class GlobalsService {
-    private currentTrips:Array<CompleteTrip>;
+    private currentTrips:Array<CompleteTrip>;    
     constructor(private loginService: LoginService) {}
     
     getHeaderOptions() {        

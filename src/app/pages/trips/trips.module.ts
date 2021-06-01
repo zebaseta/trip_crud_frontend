@@ -8,6 +8,7 @@ import {
   NbButtonModule,
   NbLayoutModule,
   NbAlertModule,
+  NbCalendarModule,
   NbDatepickerModule } from '@nebular/theme';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
@@ -24,8 +25,9 @@ import { CreateTripComponent } from './create-trip/create-trip.component';
     NbButtonModule,
     NbLayoutModule,
     NbCardModule,
+    NbCalendarModule,
     NbTreeGridModule,
-    NbDatepickerModule,
+    NbDatepickerModule.forRoot(),
     NbAlertModule,
     NbIconModule,
     NbSelectModule,

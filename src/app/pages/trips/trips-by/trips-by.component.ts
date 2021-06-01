@@ -10,6 +10,7 @@ import { BasicTrip } from '../../../models/basic-trip';
 import { Passenger } from '../../../models/passenger';
 import { PassengerFinder } from '../../../models/passenger-finder';
 import { GlobalsService } from '../../../services/globals.service';
+import { CDK_CONNECTED_OVERLAY_SCROLL_STRATEGY_PROVIDER_FACTORY } from '@angular/cdk/overlay/overlay-directives';
 
 @Component({
   selector: 'ngx-trips-by',
@@ -36,8 +37,7 @@ export class TripsByComponent implements OnInit {
       saveButtonContent: '<i class="nb-checkmark"></i>',
       cancelButtonContent: '<i class="nb-close"></i>',
     },
-    delete: {
-      //deleteButtonContent: '<i class="nb-trash"></i>',
+    delete: {     
       deleteButtonContent: '<div class="min-button"><i class="fa fa-eye"></i></div>',
       confirmDelete: true,
     },  
@@ -106,8 +106,10 @@ export class TripsByComponent implements OnInit {
       this.toast.showToast(3, "Warning", "There is no data" );  
     }
     else{
-      if(passengerToFind.email!=null) this.passengerName = passengerToFind.email; 
-      else if(passengerToFind.passport!=null) this.passengerName = passengerToFind.passport;
+
+      if(passengerToFind.email!=null && passengerToFind.email.length>0) this.passengerName = passengerToFind.email; 
+      else if(passengerToFind.passport!=null && passengerToFind.passport.length>0) this.passengerName = passengerToFind.passport;
+    
       this.tripService.getAll(passengerToFind.email, passengerToFind.passport).subscribe(
         (trips) => {        
           if(trips == null || trips.length == 0){

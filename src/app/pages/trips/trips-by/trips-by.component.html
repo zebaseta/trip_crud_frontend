@@ -3,12 +3,10 @@
     <nb-card-body>
         <form>
             <div class="form-group">
-                <input name="passengerPassport" #passengerPassport="ngModel" type="text" [(ngModel)]="passenger.passport" nbInput fullWidth placeholder="Passport" [status]="passengerPassport.dirty ? (passengerPassport.invalid ? 'danger' : 'success') : 'basic'" [required]="true"
-                    [attr.aria-invalid]="passengerPassport.invalid && passengerPassport.touched ? true : null">
+                <input name="passengerPassport" #passengerPassport="ngModel" type="text" [(ngModel)]="passenger.passport" nbInput placeholder="Passport" [status]="passengerPassport.dirty ? (passengerPassport.invalid ? 'danger' : 'success') : 'basic'" [attr.aria-invalid]="passengerPassport.invalid && passengerPassport.touched ? true : null">
             </div>
             <div class="form-group">
-                <input name="passengerEmail" #passengerEmail="ngModel" type="text" [(ngModel)]="passenger.email" nbInput fullWidth placeholder="Email" [status]="passengerEmail.dirty ? (passengerEmail.invalid ? 'danger' : 'success') : 'basic'" [required]="true" [attr.aria-invalid]="passengerEmail.invalid && passengerEmail.touched ? true : null">
-
+                <input name="passengerEmail" #passengerEmail="ngModel" type="text" [(ngModel)]="passenger.email" nbInput placeholder="Email" [status]="passengerEmail.dirty ? (passengerEmail.invalid ? 'danger' : 'success') : 'basic'" [attr.aria-invalid]="passengerEmail.invalid && passengerEmail.touched ? true : null">
             </div>
             <button nbButton status="success" (click)="findBy(passengerPassport,passengerEmail)">Send</button>
         </form>

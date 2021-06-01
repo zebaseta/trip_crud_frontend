@@ -3,11 +3,9 @@ import { Itinerary } from './itinerary';
 export class PassengerFligth {
     name: string;    
     email: string;
-    dateOfBirth: Date;
+    dateOfBirth: string;
     passport: string;
-    itinerary:Array<Fligth>
-    constructor( name, email, dateOfBirth, passport, itinerary) {
-        this.itinerary = itinerary;
+    constructor( name, email, dateOfBirth, passport) {
         this.name = name;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
