@@ -4,7 +4,7 @@ import { TripsComponent } from './trips.component';
 import { AllTripsComponent } from './all-trips/all-trips.component';
 import { TripsByComponent } from './trips-by/trips-by.component';
 import {OneTripComponent} from './one-trip/one-trip.component';
-
+import {CreateTripComponent} from './create-trip/create-trip.component';
 
 const routes: Routes = [{
   path: '',
@@ -23,6 +23,11 @@ const routes: Routes = [{
       path: 'trips/passengers/:passport',
       component: OneTripComponent,      
     }
+    ,
+    {
+      path: 'trips/create',
+      component: CreateTripComponent,      
+    }
   ],
 }];
 
@@ -36,3 +41,4 @@ export const routedComponents = [
   TripsComponent,  
   AllTripsComponent,  
 ];
+

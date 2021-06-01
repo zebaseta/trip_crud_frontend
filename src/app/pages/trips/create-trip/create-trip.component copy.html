@@ -1,0 +1,116 @@
+<div class="row">
+    <div class="col-md-12">
+        <nb-card class="inline-form-card">
+            <nb-card-header>Create trip</nb-card-header>
+            <nb-card-body>
+                <form class="form-inline">
+                    <input name="passengerName" #passengerName="ngModel" type="text" [(ngModel)]="passenger.name" nbInput fullWidth placeholder="Passenger's name" [status]="passengerName.dirty ? (passengerName.invalid ? 'danger' : 'success') : 'basic'" [required]="true"
+                        [attr.aria-invalid]="passengerName.invalid && passengerName.touched ? true : null">
+                    <input name="passengerEmail" #passengerEmail="ngModel" type="text" [(ngModel)]="passenger.email" nbInput fullWidth placeholder="Passenger's email" [status]="passengerEmail.dirty ? (passengerEmail.invalid ? 'danger' : 'success') : 'basic'" [required]="true"
+                        [attr.aria-invalid]="passengerEmail.invalid && passengerEmail.touched ? true : null">
+                    <input name="passengerPassport" #passengerPassport="ngModel" type="text" [(ngModel)]="passenger.passport" nbInput fullWidth placeholder="Passenger's passport" [status]="passengerPassport.dirty ? (passengerPassport.invalid ? 'danger' : 'success') : 'basic'"
+                        [required]="true" [attr.aria-invalid]="passengerPassport.invalid && passengerPassport.touched ? true : null">
+                    <input name="passengerDateOfBirth" #passengerDateOfBirth="ngModel" type="text" [(ngModel)]="passenger.dateOfBirth" nbInput fullWidth placeholder="Passenger's  date of Birth" [status]="passengerDateOfBirth.dirty ? (passengerDateOfBirth.invalid ? 'danger' : 'success') : 'basic' "
+                        [required]="true " [attr.aria-invalid]="passengerDateOfBirth.invalid && passengerDateOfBirth.touched ? true : null ">
+                </form>
+                <div class="form-inline">
+                    <label class="label">Add fligth</label>
+                    <button nbButton status="primary" (click)="create(passengerName,passengerPassport,passengerEmail,passengerDateOfBirth)"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                </div>
+                <form class="form-inline">
+                    <label class="label">Outbound airport</label>
+                    <nb-select class="cboxLarge" [(ngModel)]="fligth.originAirport" fullWidth selected={{fligth.originAirport}}>
+                        <nb-option *ngFor="let aiport of aiports" [value]="aiport.name">{{aiport.name}}</nb-option>
+                    </nb-select>
+                    <label class="label">Outbound date</label>
+                    <input nbInput placeholder="Outbound date" [nbDatepicker]="formpickerOutbound" [(ngModel)]="fligth.originDate">
+                    <nb-datepicker #formpickerOutbound></nb-datepicker>
+                    <!-- <nb-select placeholder="Hour" selected={{outboundHour}}> -->
+                    <nb-select placeholder="Hour">
+                        <nb-option value="0">00</nb-option>
+                        <nb-option value="1">01</nb-option>
+                        <nb-option value="2">02</nb-option>
+                        <nb-option value="3">03</nb-option>
+                        <nb-option value="4">04</nb-option>
+                        <nb-option value="5">05</nb-option>
+                        <nb-option value="6">06</nb-option>
+                        <nb-option value="7">07</nb-option>
+                        <nb-option value="8">08</nb-option>
+                        <nb-option value="9">09</nb-option>
+                        <nb-option value="10">10</nb-option>
+                        <nb-option value="11">11</nb-option>
+                        <nb-option value="12">12</nb-option>
+                        <nb-option value="13">13</nb-option>
+                        <nb-option value="14">14</nb-option>
+                        <nb-option value="15">15</nb-option>
+                        <nb-option value="16">16</nb-option>
+                        <nb-option value="17">17</nb-option>
+                        <nb-option value="18">18</nb-option>
+                        <nb-option value="19">19</nb-option>
+                        <nb-option value="20">20</nb-option>
+                        <nb-option value="21">21</nb-option>
+                        <nb-option value="22">22</nb-option>
+                        <nb-option value="23">23</nb-option>
+                    </nb-select>
+                    <!-- <nb-select placeholder="Minute" class="cbox" selected={{outboundMinute}}> -->
+                    <nb-select placeholder="Minute" class="cbox">
+                        <nb-option value="0">00</nb-option>
+                        <nb-option value="10">10</nb-option>
+                        <nb-option value="20">20</nb-option>
+                        <nb-option value="30">30</nb-option>
+                        <nb-option value="40">40</nb-option>
+                        <nb-option value="50">50</nb-option>
+                    </nb-select>
+
+                    <label class="label">Return airport</label>
+                    <nb-select class="cboxLarge" fullWidth [(ngModel)]="fligth.destinationAirport">
+                        <nb-option *ngFor="let aiport of aiports" [value]="aiport.name">{{aiport.name}}</nb-option>
+                    </nb-select>
+                    <label class="label">Return date</label>
+                    <input nbInput placeholder="Return date" [nbDatepicker]="formpickerReturn" [(ngModel)]="fligth.destinationDate">
+                    <nb-datepicker #formpickerReturn></nb-datepicker>
+                    <!-- <nb-select placeholder="Hour" selected={{returnHour}} [(ngModel)]="returnHour"> -->
+                    <nb-select placeholder="Hour">
+                        <nb-option value="0">00</nb-option>
+                        <nb-option value="1">01</nb-option>
+                        <nb-option value="2">02</nb-option>
+                        <nb-option value="3">03</nb-option>
+                        <nb-option value="4">04</nb-option>
+                        <nb-option value="5">05</nb-option>
+                        <nb-option value="6">06</nb-option>
+                        <nb-option value="7">07</nb-option>
+                        <nb-option value="8">08</nb-option>
+                        <nb-option value="9">09</nb-option>
+                        <nb-option value="10">10</nb-option>
+                        <nb-option value="11">11</nb-option>
+                        <nb-option value="12">12</nb-option>
+                        <nb-option value="13">13</nb-option>
+                        <nb-option value="14">14</nb-option>
+                        <nb-option value="15">15</nb-option>
+                        <nb-option value="16">16</nb-option>
+                        <nb-option value="17">17</nb-option>
+                        <nb-option value="18">18</nb-option>
+                        <nb-option value="19">19</nb-option>
+                        <nb-option value="20">20</nb-option>
+                        <nb-option value="21">21</nb-option>
+                        <nb-option value="22">22</nb-option>
+                        <nb-option value="23">23</nb-option>
+                    </nb-select>
+                    <!-- <nb-select placeholder="Minute" class="cbox" selected={{returnMinute}}> -->
+                    <nb-select placeholder="Minute" class="cbox">
+                        <nb-option value="0">00</nb-option>
+                        <nb-option value="10">10</nb-option>
+                        <nb-option value="20">20</nb-option>
+                        <nb-option value="30">30</nb-option>
+                        <nb-option value="40">40</nb-option>
+                        <nb-option value="50">50</nb-option>
+                    </nb-select>
+
+                    <div>
+                        <button nbButton status="success" (click)="create(passengerName,passengerPassport,passengerEmail,passengerDateOfBirth)">Send</button>
+                    </div>
+                </form>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

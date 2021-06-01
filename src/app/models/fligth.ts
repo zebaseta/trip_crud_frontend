@@ -1,4 +1,4 @@
-export class Fligth {
+export class Fligth {    
     code: string;
     originDate: string;
     originAirport:string;

@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-md-12">
+        <nb-card class="inline-form-card">
+            <nb-card-header>Create trip</nb-card-header>
+            <nb-card-body>
+                <form class="form-inline">
+
+                    <input name="passengerName" #passengerName="ngModel" type="text" [(ngModel)]="passenger.name" nbInput fullWidth placeholder="Passenger's name" [status]="passengerName.dirty ? (passengerName.invalid ? 'danger' : 'success') : 'basic'" [required]="true"
+                        [attr.aria-invalid]="passengerName.invalid && passengerName.touched ? true : null">
+                    <input name="passengerEmail" #passengerEmail="ngModel" type="text" [(ngModel)]="passenger.email" nbInput fullWidth placeholder="Passenger's email" [status]="passengerEmail.dirty ? (passengerEmail.invalid ? 'danger' : 'success') : 'basic'" [required]="true"
+                        [attr.aria-invalid]="passengerEmail.invalid && passengerEmail.touched ? true : null">
+                    <input name="passengerPassport" #passengerPassport="ngModel" type="text" [(ngModel)]="passenger.passport" nbInput fullWidth placeholder="Passenger's passport" [status]="passengerPassport.dirty ? (passengerPassport.invalid ? 'danger' : 'success') : 'basic'"
+                        [required]="true" [attr.aria-invalid]="passengerPassport.invalid && passengerPassport.touched ? true : null">
+                    <input name="passengerDateOfBirth" #passengerDateOfBirth="ngModel" type="text" [(ngModel)]="passenger.dateOfBirth" nbInput fullWidth placeholder="Passenger's  date of Birth" [status]="passengerDateOfBirth.dirty ? (passengerDateOfBirth.invalid ? 'danger' : 'success') : 'basic' "
+                        [required]="true " [attr.aria-invalid]="passengerDateOfBirth.invalid && passengerDateOfBirth.touched ? true : null ">
+                </form>
+                <div class="form-inline">
+                    <label class="label">Add fligth</label>
+                    <button nbButton status="primary" (click)="createFlight()"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                </div>
+                <form class="form-inline">
+                    <div *ngFor=" let fligth of fligths ">
+                        <label class="label">Origin airport</label>
+                        <nb-select class="cboxLarge" fullWidth id=0 (selectedChange)="onAirportSelected($event,fligth.id)">
+                            <nb-option *ngFor=" let aiport of aiports " [value]="aiport.name ">{{aiport.name}}</nb-option>
+                        </nb-select>
+                        <label class="label">Origin date</label>
+                        <!-- <input nbInput placeholder="Outbound date" [nbDatepicker]="dateTimePicker" (onChange)="onOriginDateSelected($event,fligth.id)">
+                        <nb-date-timepicke #dateTimePicker></nb-date-timepicke> -->
+                        <input nbInput placeholder="Pick Date" [nbDatepicker]="dateTimePicker">
+                        <nb-date-timepicker withSeconds #dateTimePicker></nb-date-timepicker>
+                    </div>
+                </form>
+
+
+                <!-- <input name="passengerName " #passengerName="ngModel " type="text " [(ngModel)]="passenger.name " nbInput fullWidth placeholder="Passenger 's name" [status]="passengerName.dirty ? (passengerName.invalid ? 'danger ' : 'success
+                        ') : 'basic '" [required]="true"
+                        [attr.aria-invalid]="passengerName.invalid && passengerName.touched ? true : null">
+                    <input name="passengerEmail" #passengerEmail="ngModel" type="text" [(ngModel)]="passenger.email" nbInput fullWidth placeholder="Passenger's email " [status]="passengerEmail.dirty ? (passengerEmail.invalid ? 'danger' : 'success')
+                        : 'basic' " [required]="true "
+                        [attr.aria-invalid]="passengerEmail.invalid && passengerEmail.touched ? true : null ">
+                    <input name="passengerPassport " #passengerPassport="ngModel " type="text " [(ngModel)]="passenger.passport " nbInput fullWidth placeholder="Passenger
+                        's passport" [status]="passengerPassport.dirty ? (passengerPassport.invalid ? 'danger ' : 'success ') : 'basic '"
+                        [required]="true" [attr.aria-invalid]="passengerPassport.invalid && passengerPassport.touched ? true : null">
+                    <input name="passengerDateOfBirth" #passengerDateOfBirth="ngModel" type="text" [(ngModel)]="passenger.dateOfBirth" nbInput fullWidth placeholder="Passenger's date of Birth " [status]="passengerDateOfBirth.dirty ? (passengerDateOfBirth.invalid
+                        ? 'danger' : 'success') : 'basic' "
+                        [required]="true " [attr.aria-invalid]="passengerDateOfBirth.invalid && passengerDateOfBirth.touched ? true : null ">
+                    <label class="label ">Outbound airport</label>
+                    <nb-select class="cboxLarge " [(ngModel)]="fligth.originAirport " fullWidth selected={{fligth.originAirport}}>
+                        <nb-option *ngFor="let aiport of aiports " [value]="aiport.name ">{{aiport.name}}</nb-option>
+                    </nb-select> -->
+                <div>
+                    <button nbButton status="success" (click)="create(passengerName,passengerPassport,passengerEmail,passengerDateOfBirth) ">Send</button>
+                </div>
+
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

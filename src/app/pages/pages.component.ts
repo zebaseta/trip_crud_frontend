@@ -35,13 +35,17 @@ export class PagesComponent {
       icon: 'activity-outline',      
       children: [
         {
-          title: 'All trips',
+          title: 'View all trips',
           link: '/trips',
           home: true,
         },
         {
-          title: 'Trips by passenger',
+          title: 'Find trips by passenger',
           link: '/trips/passengers',
+        },
+        {
+          title: 'Create trip',
+          link: '/trips/create',
         }
       ]
     }];
