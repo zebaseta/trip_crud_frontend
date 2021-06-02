@@ -110,7 +110,9 @@ export class TripsByComponent implements OnInit {
       if(passengerToFind.email!=null && passengerToFind.email.length>0) this.passengerName = passengerToFind.email; 
       else if(passengerToFind.passport!=null && passengerToFind.passport.length>0) this.passengerName = passengerToFind.passport;
     
-      this.tripService.getAll(passengerToFind.email, passengerToFind.passport).subscribe(
+      
+
+      this.tripService.getAll(this.passengerName, passengerToFind.passport).subscribe(
         (trips) => {        
           if(trips == null || trips.length == 0){
             this.toast.showToast(2, "Info", "There are no trips for this passenger" );  

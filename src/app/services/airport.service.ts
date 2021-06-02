@@ -43,10 +43,10 @@ export class AirportService {
                 catchError((error: HttpErrorResponse) => throwError(error.error || 'Server Error')));
     }
 
-    delete(airport:Airport): Observable<Airport> {          
+    delete(airport:Airport): Observable<any>  {          
         const url = `${environment.api}/airports/${airport.code}`                
         const headers = this.globals.getHeaderOptions();        
-        return this.http.delete<Airport>(url ,headers)
+        return this.http.delete(url ,headers)
             .pipe(
                 map((response) => response),                
                 catchError((error: HttpErrorResponse) => throwError(error.error || 'Server Error')));

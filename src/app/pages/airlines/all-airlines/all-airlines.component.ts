@@ -90,7 +90,7 @@ export class AllAirlinesComponent implements OnInit {
     var  airline:Airline = event.data
     this.airlineService.update(airline).subscribe(
       (airline) => {        
-        if(!airline == null){
+        if(!(airline == null)){
           this.toast.showToast(2, "Info", "The airline was updated" );  
           event.confirm.resolve();
         }
@@ -111,7 +111,17 @@ export class AllAirlinesComponent implements OnInit {
   
   onDeleteConfirm(event): void {        
     if (window.confirm('Are you sure you want to delete?')) {
-      event.confirm.resolve();
+      var  airline:Airline = event.data
+      this.airlineService.delete(airline).subscribe(
+      () => {
+          this.toast.showToast(2, "Info", "The airline was deleted" );  
+          event.confirm.resolve();
+       },
+      (error: any) => {
+          console.log(error);
+          this.toast.showToast(4, "Error", "The airline could not be delete: "+error );  
+          event.confirm.resolve();
+      });
     } else {
       event.confirm.reject();
     }

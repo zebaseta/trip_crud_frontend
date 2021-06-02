@@ -4,6 +4,7 @@ import { HttpClient,  HttpHeaders, HttpParams, HttpErrorResponse } from '@angula
 import { catchError, map } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { TripToCreate } from '../models/trip-to-create';
+import { BasicTrip } from '../models/basic-trip';
 import { CompleteTrip } from '../models/complete-trip';
 import { GlobalsService } from "./globals.service";
 
@@ -22,8 +23,16 @@ export class TripService {
             .pipe(
                 map((response) => response),                
                 catchError((error: HttpErrorResponse) => throwError(error.error || 'Server Error')));
-    }
+    } 
 
+    delete( trip:BasicTrip): Observable<any>  {          
+        const url = `${environment.api}/trips/${trip.id}`                
+        const headers = this.globals.getHeaderOptions();        
+        return this.http.delete(url ,headers)
+            .pipe(
+                map((response) => response),                
+                catchError((error: HttpErrorResponse) => throwError(error.error || 'Server Error')));
+    }
 
     getAll(email:string,passport:string): Observable<Array<CompleteTrip>> {  
         var queryParams = this.buildQueryParams(email,passport);             

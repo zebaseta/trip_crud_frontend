@@ -90,7 +90,7 @@ export class AllAirportsComponent implements OnInit {
     var  airport:Airport = event.data
     this.airportService.update(airport).subscribe(
       (airport) => {        
-        if(!airport == null){
+        if(!(airport == null)){
           this.toast.showToast(2, "Info", "The airport was updated" );  
           event.confirm.resolve();
         }
@@ -105,34 +105,46 @@ export class AllAirportsComponent implements OnInit {
           event.confirm.reject();
       }
     );
-    
-    
   }
   
-  onDeleteConfirm(event): void {        
+  onDeleteConfirm(event): void { 
+
     if (window.confirm('Are you sure you want to delete?')) {
-      event.confirm.resolve();
-    } else {
+      var  airport:Airport = event.data
+      this.airportService.delete(airport).subscribe(
+        () => {        
+            this.toast.showToast(2, "Info", "The airport was delete" );  
+            event.confirm.resolve();
+         
+         },
+        (error: any) => {
+            console.log(error);
+            this.toast.showToast(4, "Error", "The airport could not be delete: "+error );  
+            event.confirm.reject();
+        }
+      );
+    }
+    else {
       event.confirm.reject();
     }
   }
   
-    ngOnInit(): void {
-      this.airportService.getAll().subscribe(
-        (airports) => {        
-          if(airports == null || airports.length == 0){
-            this.toast.showToast(2, "Info", "There are no airports" );  
-          }
-          else{
-            this.source.load(airports);
-          }
-          console.log(airports);
-          
-         },
-        (error: any) => {
-            console.log(error);
+  ngOnInit(): void {
+    this.airportService.getAll().subscribe(
+      (airports) => {        
+        if(airports == null || airports.length == 0){
+          this.toast.showToast(2, "Info", "There are no airports" );  
         }
-      );
-   }
+        else{
+          this.source.load(airports);
+        }
+        console.log(airports);
+        
+        },
+      (error: any) => {
+          console.log(error);
+      }
+    );
+  }
 
 }
