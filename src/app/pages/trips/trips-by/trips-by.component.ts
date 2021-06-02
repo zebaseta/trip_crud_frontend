@@ -134,6 +134,7 @@ export class TripsByComponent implements OnInit {
     }
     
   }
+  
 
   routeToAPage(event): void {    
     var trip:BasicTrip = event.data;

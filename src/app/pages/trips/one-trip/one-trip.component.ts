@@ -5,6 +5,7 @@ import { NbToastrService } from '@nebular/theme';
 import { TripsToast } from '../../utils/trips-toast';
 import {CompleteTrip} from './../../../models/complete-trip'
 import { LocalDataSource } from 'ng2-smart-table';
+import { TripService } from '../../../services/trip.service';
 @Component({
   selector: 'ngx-one-trip',
   templateUrl: './one-trip.component.html',
@@ -152,7 +153,8 @@ export class OneTripComponent implements OnInit {
   };
 
 
-  constructor(private currentRoute:ActivatedRoute, private route: Router,private globalService: GlobalsService,private toastrService: NbToastrService) { 
+  constructor(private currentRoute:ActivatedRoute, private route: Router, private tripService:TripService,
+    private globalService: GlobalsService,private toastrService: NbToastrService) { 
     this.toast = new TripsToast(toastrService);
   }
 
@@ -174,5 +176,28 @@ export class OneTripComponent implements OnInit {
     }
     
   }
+
+  deleteTrip(event){   
+    if (window.confirm('Are you sure you want to delete?')) {
+      
+      this.tripService.delete(this.idTrip).subscribe(
+        () => {        
+            this.toast.showToast(2, "Info", "The trip was delete" );  
+            this.route.navigateByUrl('/trips');    
+         
+         },
+        (error: any) => {
+            console.log(error);
+            this.toast.showToast(4, "Error", "The trip could not be delete");  
+            event.confirm.reject();
+        }
+      );
+    }
+    else {
+      event.confirm.reject();
+    }
+   
+  }
+
 
 }

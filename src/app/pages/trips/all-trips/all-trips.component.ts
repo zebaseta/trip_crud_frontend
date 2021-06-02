@@ -28,9 +28,9 @@ export class AllTripsComponent implements OnInit {
       cancelButtonContent: '<i class="nb-close"></i>',
     },
     edit: {
-      editButtonContent: '<i class="ion-edit"></i>',
-      saveButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
+      editButtonContent: '<div class="min-button"><i class="fa fa-eye"></i></div>',
+      saveButtonContent: '<div class="min-button"><i class="fa fa-eye"></i></div>',
+      cancelButtonContent: '<div class="min-button"><i class="fa fa-eye"></i></div>',
     },
     delete: {
       //deleteButtonContent: '<i class="nb-trash"></i>',
@@ -80,27 +80,7 @@ export class AllTripsComponent implements OnInit {
   };
 
 
-  onDeleteConfirm(event){
-    var trip:BasicTrip = event.data;
-    if (window.confirm('Are you sure you want to delete?')) {
-      
-      this.tripService.delete(trip).subscribe(
-        () => {        
-            this.toast.showToast(2, "Info", "The trip was delete" );  
-            event.confirm.resolve();
-         
-         },
-        (error: any) => {
-            console.log(error);
-            this.toast.showToast(4, "Error", "The trip could not be delete");  
-            event.confirm.reject();
-        }
-      );
-    }
-    else {
-      event.confirm.reject();
-    }
-  }
+
 
   constructor(private route: Router,private toastrService: NbToastrService, 
     private tripService: TripService, private globalService:GlobalsService) {     

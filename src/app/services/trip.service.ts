@@ -25,8 +25,8 @@ export class TripService {
                 catchError((error: HttpErrorResponse) => throwError(error.error || 'Server Error')));
     } 
 
-    delete( trip:BasicTrip): Observable<any>  {          
-        const url = `${environment.api}/trips/${trip.id}`                
+    delete( idTrip:number): Observable<any>  {          
+        const url = `${environment.api}/trips/${idTrip}`                
         const headers = this.globals.getHeaderOptions();        
         return this.http.delete(url ,headers)
             .pipe(
