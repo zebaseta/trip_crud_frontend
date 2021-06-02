@@ -87,7 +87,7 @@ export class AllAirportsComponent implements OnInit {
   
 
   updateRecord(event): void {    
-    var  airport:Airport = event.data
+    var  airport:Airport = event.newData;
     this.airportService.update(airport).subscribe(
       (airport) => {        
         if(!(airport == null)){

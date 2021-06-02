@@ -65,7 +65,10 @@ export class AllAirlinesComponent implements OnInit {
   }
 
   addRecord(event): void {
-    var  airline:Airline = event.newData    
+    
+    var  airline:Airline = event.newData;
+    
+
     this.airlineService.create(airline).subscribe(
       (airline) => {        
         if(!(airline == null)){
@@ -86,8 +89,8 @@ export class AllAirlinesComponent implements OnInit {
   }
   
 
-  updateRecord(event): void {    
-    var  airline:Airline = event.data
+  updateRecord(event): void {        
+    var  airline:Airline = event.newData    
     this.airlineService.update(airline).subscribe(
       (airline) => {        
         if(!(airline == null)){
