@@ -131,6 +131,12 @@ export class CreateTripComponent implements OnInit {
     this.passenger.dateOfBirth = dateWithFormat;
   }
 
+  deleteTrip(id){    
+    this.fligths = this.fligths.filter(x => {
+      return x.id != id;
+    });
+  }
+
   createTrip(){
      var passengerToFind = this.passenger as PassengerFligth;
 
@@ -139,25 +145,31 @@ export class CreateTripComponent implements OnInit {
       this.toast.showToast(3, "Error", "Missing data" );  
     }
     else{      
-      var fligtsToCreate:Array<FligthToCreate> =  this.fligths.map(t => t.toEntityCreation(this.aiports,this.airlines));
-      console.log(fligtsToCreate);
-      var trip = new TripToCreate(passengerToFind,fligtsToCreate);
-      console.log(trip);
-      this.tripServise.create(trip).subscribe(
-        (trip) => {        
-          if(trip == null ){
+      try{
+        var fligtsToCreate:Array<FligthToCreate> =  this.fligths.map(t => t.toEntityCreation(this.aiports,this.airlines));      
+        var trip = new TripToCreate(passengerToFind,fligtsToCreate);
+        console.log(trip);
+        this.tripServise.create(trip).subscribe(
+          (trip) => {        
+            if(trip == null ){
+              this.toast.showToast(3, "Error", "Could not create trip" );  
+            }
+            else{
+              this.toast.showToast(2, "Info", "The trip was created with id "+trip.id );  
+            }        
+            
+           },
+          (error: any) => {
             this.toast.showToast(3, "Error", "Could not create trip" );  
+            console.log(error);
           }
-          else{
-            this.toast.showToast(2, "Info", "The trip was created with id "+trip.id );  
-          }        
-          
-         },
-        (error: any) => {
-          this.toast.showToast(3, "Error", "Could not create trip" );  
-          console.log(error);
-        }
-      );
+        );
+      }
+      catch(error ){
+        console.log(error);
+        this.toast.showToast(3, "Error", "Missing data" );  
+      }
+      
       
     }
   }

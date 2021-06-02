@@ -123,11 +123,13 @@
                                     </nb-select>
                                 </div>
                             </nb-card-body>
+                            <div class="form-inline">
+                                <label class="label">Delete fligth</label>
+                                <button nbButton status="danger" (click)="deleteTrip(fligth.id)"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                            </div>
                         </nb-card>
                     </div>
                 </form>
-
-
             </nb-card-body>
             <nb-card-footer>
                 <div>
