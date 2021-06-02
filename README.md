@@ -4,7 +4,7 @@ Los viajes pueden componerse un por un conjunto de vuelos de ida y un conjunto d
 * Repositorio backend: https://github.com/zebaseta/trip_crud_backend
 * Api de swagger backend: https://springboot-otravo-trips.herokuapp.com/otravo/v1/swagger-ui.html (heroku)
 * Frontend: https://master.dcj0k2xihltxq.amplifyapp.com/ (aws)
-* Uri de healtcheck (para monitorear mediante un hearthbeat por ejemplo): https://springboot-otravo-* trips.herokuapp.com/otravo/v1/actuator/health/custom
+* Uri de healtcheck (para monitorear mediante un hearthbeat por ejemplo): https://springboot-otravo-trips.herokuapp.com/otravo/v1/actuator/health/custom
 
 Funcionalidades destacadas en el front:
 - Login de usuario
